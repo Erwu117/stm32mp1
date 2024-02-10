@@ -1,7 +1,7 @@
-# Development on STM32MP157F-DK2 board  
+# Development on STM32MP157A-DK1 board  
 # How to Use Yocto Project to Create a Custom Linux Image
 
-### STM32MP157F-DK2 Development Kit - Yocto kirkstone
+### STM32MP157A-DK1 Development Kit - Yocto kirkstone
 #### September 2022  
 
 ## Contents
@@ -50,7 +50,7 @@
 
 ### Required Hardware
 
-- STM32MP157F-DK2 Development Kit
+- STM32MP157A-DK1 Development Kit
 - USB-C to USB-A power cable
 - Micro USB to USB-A cable for connecting to the board via terminal
 - A minimum of 8 GB SD card
@@ -263,7 +263,7 @@ cd ~/Projects/yocto/build-mp1/tmp/deploy/images/stm32mp
 From here, you can figure out which image files ST would use to flash an SD card by looking at the flashlayout_core-image-minimal/trusted/FlashLayout_sdcard_stm32mp157f-dk2-trusted.tsv file in a text editor.
 
 ```
-gedit flashlayout_core-image-minimal/trusted/FlashLayout_sdcard_stm32mp157f-dkc2-trusted.tsv
+gedit flashlayout_core-image-minimal/trusted/FlashLayout_sdcard_stm32mp157a-dk1-trusted.tsv
 ```  
    
   ![flash_partitions](https://user-images.githubusercontent.com/56772428/210804263-d1e07e10-f960-4431-8c37-66f9bdf30e8d.jpeg)
@@ -311,7 +311,7 @@ sudo dd if =../flashlayout_core-image-minimal/extensible/../../FlashLayout_sdcar
 
 ### 3.1 Boot into Linux
 
-Plug the SD card into the STM32MP157F-DK2 board. Connect a USB micro cable from your host computer to the ST-LINK (CN11) port on the board. On your host computer, enter the
+Plug the SD card into the STM32MP157A-DK1 board. Connect a USB micro cable from your host computer to the ST-LINK (CN11) port on the board. On your host computer, enter the
 following:
 
 ```
@@ -385,7 +385,7 @@ Start by enabling the OpenEmbedded build environment again:
 
 ```
 cd ~/Projects/yocto
-source poky/oe-init-build-env build-mp
+source poky/oe-init-build-env build-mp1
 ```
 Then, create a custom layer that sits at the same directory level as our other layers:
 
@@ -508,8 +508,8 @@ gedit 0001-add-i2c5-userspace-dts.patch
 Change the file header so that it points to the correct file locations:
 
 ```
---- a/arch/arm/boot/dts/stm32mp157f-dk2.dts
-+++ b/arch/arm/boot/dts/stm32mp157f-dk2.dts
+--- a/arch/arm/boot/dts/stm32mp157a-dk1.dts
++++ b/arch/arm/boot/dts/stm32mp157a-dk1.dts
 ```
    
   ![patch_file](https://user-images.githubusercontent.com/56772428/210805625-316d400b-fa19-4234-a7f3-b429f289f9b6.jpeg)
@@ -606,8 +606,8 @@ When the build process is finished, flash the image onto the SD card as discusse
     
 ```
 cd ~/Projects/yocto/build-mp1/tmp/deploy/images/stm32mp1/scripts  
-./create_sdcard_from_flashlayout.sh ../flashlayout_custom-image/extensible/FlashLayout_sdcard_stm32mp157f-dk2-extensible.tsv  
-sudo dd if =../flashlayout_custom-image/extensible/../../FlashLayout_sdcard_stm32mp157f-dk2-extensible.raw of=/dev/mmcblk0 bs=8M conv=fdatasync status=progress oflag=direct
+./create_sdcard_from_flashlayout.sh ../flashlayout_custom-image/extensible/FlashLayout_sdcard_stm32mp157a-dk1-extensible.tsv  
+sudo dd if =../flashlayout_custom-image/extensible/../../FlashLayout_sdcard_stm32mp157fadk1-extensible.raw of=/dev/mmcblk0 bs=8M conv=fdatasync status=progress oflag=direct
 ```  
    
 ### 7.2 Testing I<sup>2</sup>C and FDCAN
