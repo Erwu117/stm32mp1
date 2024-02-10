@@ -4,40 +4,6 @@
 ### STM32MP157A-DK1 Development Kit - Yocto kirkstone
 #### September 2022  
 
-## Contents
-
-- 1 [Creating a Custom Linux Image](#Creating-a-Custom-Linux-Image)
-   - Tutorials
-   - Required Hardware
-   - Required Software
-   - 1.1 Install Dependencies
-   - 1.2 Download Layers
-   - 1.3 Configure Build
-   - 1.4 Configure Kernel
-   - 1.5 Build Image
-- 2 [Final Image for SD Card](#Final-Image-for-SD-Card)
-   - 2.1 Creating the Final Image
-   - 2.2 Flashing the Image to SD Card
-- 3 [Testing the Image](#Testing-the-Image)
-   - 3.1 Boot into Linux
-- 4 [Adding Build Tools](#Adding-Build-Tools)
-- 5 [Creating Custom Layer and Image](#Creating-Custom-Layer-and-Image)
-   - 5.1 Default Image Recipes
-   - 5.2 Create Custom Layer
-   - 5.3 Create Custom Image
-   - 5.4 Add Layer to Build Process
-- 6 [Device Tree Patches](#Device-Tree-Patches)
-   - 6.1 Create Device Tree Patch
-   - 6.2 Enable I<sup>2</sup>C and FDCAN
-   - 6.3 Applying Patch to Device Tree
-   - 6.4 Enable i2cdetect and can-utils
-- 7 [Building Custom Image](#Building-Custom-Image)
-   - 7.1 Build and Flash the Custom Image
-   - 7.2 Testing I<sup>2</sup>C and FDCAN
-      - 7.2.1 I<sup>2</sup>C Tools and Sensor Connection
-      - 7.2.2 FDCAN Initialisation and Loopback Test
-- [References](#References)
-
 
 # Creating a Custom Linux Image
 
@@ -57,6 +23,8 @@
 - At least 4 GB of RAM on your host PC
 
 ### Required Software
+
+#### Tried and Tested to WSL2 Environment (Note: Limitation of swap storage can be changed in .wslconfig file usually in C:\Users\<name>\.wslconfig)
 
 You will need Linux for this project, as all of the tools we are using must be run in Linux. How-
 ever, the steps shown below are tested in Ubuntu 20.04 using dual-boot. While you can set up a
